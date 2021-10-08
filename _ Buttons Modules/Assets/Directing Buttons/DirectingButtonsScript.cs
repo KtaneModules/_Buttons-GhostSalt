@@ -71,16 +71,14 @@ public class DirectingButtonsScript : MonoBehaviour
     void Calculate()
     {
         bool[,] VisitedSquares = new bool[4, 4];
-        int Row = 0;
-        int Column = 0;
+        int StartingRow = Rnd.Range(0, 4);
+        int StartingColumn = Rnd.Range(0, 4);
         int RandomDirection = 0;
         CalcSteps:
         {
             VisitedSquares = new bool[4, 4];
-            Row = Rnd.Range(0, 4);
-            Column = Rnd.Range(0, 4);
-            StartingRow = Row;
-            StartingColumn = Column;
+            int Row = StartingRow;
+            int Column = StartingColumn;
             for (int i = 0; i < 15; i++)
             {
                 if (AdjacentVisitedSquares(Row, Column, VisitedSquares).All(x => x))
@@ -122,27 +120,31 @@ public class DirectingButtonsScript : MonoBehaviour
                             break;
                     }
                 }
-                switch (Colours[Row, Column])
-                {
-                    case 0:
-                        if (StartingRow == Row - 1)
-                            goto CalcSteps;
-                        break;
-                    case 1:
-                        if (StartingColumn == Column + 1)
-                            goto CalcSteps;
-                        break;
-                    case 2:
-                        if (StartingRow == Row + 1)
-                            goto CalcSteps;
-                        break;
-                    default:
-                        if (StartingColumn == Column - 1)
-                            goto CalcSteps;
-                        break;
-                }
-                GoalSquare = (Row * 4) + Column;
             }
+            RandomDirection = Rnd.Range(0, 4);
+            while ((RandomDirection == 0 && Row == 0) || (RandomDirection == 1 && Column == 3) || (RandomDirection == 2 && Row == 3) || (RandomDirection == 3 && Column == 0))
+                RandomDirection = Rnd.Range(0, 4);
+            Colours[Row, Column] = RandomDirection;
+            switch (Colours[Row, Column])
+            {
+                case 0:
+                    if (StartingRow == Row - 1)
+                        goto CalcSteps;
+                    break;
+                case 1:
+                    if (StartingColumn == Column + 1)
+                        goto CalcSteps;
+                    break;
+                case 2:
+                    if (StartingRow == Row + 1)
+                        goto CalcSteps;
+                    break;
+                default:
+                    if (StartingColumn == Column - 1)
+                        goto CalcSteps;
+                    break;
+            }
+            GoalSquare = (Row * 4) + Column;
         }
         for (int i = 0; i < 16; i++)
             ColoursToString[i / 4][i % 4] = Colours[i / 4, i % 4].ToString();

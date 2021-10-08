@@ -56,7 +56,6 @@ public class UncolouredButtonsScript : MonoBehaviour
             BinaryNumbers[i] = Colours[(Colours[i * 4] * 8) + (Colours[(i * 4) + 1] * 4) + (Colours[(i * 4) + 2] * 2) + Colours[(i * 4) + 3]];
             ConvertedBinaryNumbers[i] = (Colours[i * 4] * 8) + (Colours[(i * 4) + 1] * 4) + (Colours[(i * 4) + 2] * 2) + Colours[(i * 4) + 3];
         }
-        Debug.Log(BinaryNumbers.Join());
         Answer = (BinaryNumbers[0] * 8) + (BinaryNumbers[1] * 4) + (BinaryNumbers[2] * 2) + BinaryNumbers[3];
         Debug.LogFormat("[Uncoloured Buttons #{0}] The grid of buttons:\n{1}", _moduleID, ColoursToString[0].Select(x => x == "0" ? x = "K" : x = "W").Join() + "\n" + ColoursToString[1].Select(x => x == "0" ? x = "K" : x = "W").Join() + "\n" + ColoursToString[2].Select(x => x == "0" ? x = "K" : x = "W").Join() + "\n" + ColoursToString[3].Select(x => x == "0" ? x = "K" : x = "W").Join());
         Debug.LogFormat("[Uncoloured Buttons #{0}] The resulting button is button {1} in reading order, or button {2}.", _moduleID, (Answer + 1).ToString(), CoordinateNames[Answer].ToUpperInvariant());

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkshopPublishedFileID: 2440882267
   Title: _ Buttons
-  Tags: []
+  Tags:
+  - Regular Module

@@ -14,12 +14,19 @@ MonoBehaviour:
   id: GSButtonModules
   title: _ Buttons
   author: GhostSalt
-  description: 'A collection of modules that have a grid of buttons, except there''s
-    only one module in here (for now, don''t worry).
+  description: 'A collection of modules that have a grid of buttons. This pack includes:
+
+
+    -Directing Buttons
+
+    -Uncoloured Buttons
+
+    -Faulty Buttons
+
+    -Surrounding Buttons
 
 
     TP time! Poggers!'
   version: 1.0
-  outputFolder: C:\Program Files (x86)\Steam\steamapps\common\Keep Talking and Nobody
-    Explodes\mods
-  previewImage: {fileID: 2800000, guid: ee7def833ee0fcb4e831ec938c3fadb3, type: 3}
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: cbee746ede5923b45bf0ea3aade896ef, type: 3}
